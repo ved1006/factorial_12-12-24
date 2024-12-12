@@ -1,0 +1,103 @@
+<html>
+	<head>
+	<title> Factorial App </title>
+	<style>
+		* { font-size:60px;font-family:Cambria; }
+		h1 { background-color:black;color:white;width:70%;border-radius:30px;}
+		body { background-color:grey; }
+		.btn { background-color:green;color:red;border-radius:30px;margin-left:3%; }
+		.btn:hover { color:white; }
+		
+		#output{
+			white-space:pre-wrap;
+			word-wrap:break-word;
+			line-height:1.5;
+			}
+		
+	</style>
+	</head>
+	<body>
+		<center>
+			<h1>Factorial Finder</h1>
+			<br/>
+			<form onsubmit="find()" >
+				<input type="number"	placeholder="Enter the number"		id="num"	/>
+			<br/><br/>
+				<input type="submit"		value="M1"		class="btn" 	/>
+				<input type="submit"		value="M2"		class="btn" 	/>
+				<input type="submit"		value="M3"		class="btn" 	/>
+			
+			</form>
+				<div id="output" />
+			
+			<script>
+				function find()
+				{
+					event.preventDefault();
+					let num=document.getElementById("num");	
+					let msg=document.getElementById("msg");
+								
+					if(num.value==="")
+					{	
+						alert("enter the number");
+						msg.innerHTML= " ";
+						num.focus();
+						return;
+						
+					}
+		
+					let n= parseInt(num.value);
+		
+					if(n<0)
+					{
+						alert("numb shd be min 0");
+						msg.innerHTML= " ";
+						num.focus();
+						return;
+							
+					}
+					let action=document.activeElement.value;
+					let ans=" ";
+
+					if(action==="M1")
+					{
+							let i=1n,f=1n;
+						while(i<= BigInt(n))
+						{
+							f = f*i;
+							i++;
+						}
+							ans="M1= " + f.toString();
+					
+			document.getElementById('output').innerText=ans.toString();
+					}
+	
+					else if(action==="M2")
+					{
+						let i=1n,f=1n;
+						do
+						{
+							f= f * i;
+							i++;
+						}while(i<=BigInt(n));
+
+					ans="M2= " + f.toString();
+					document.getElementById('output').innerText=ans.toString();	
+					}
+
+				else if(action==="M3")
+				{
+					let f=1n;
+					for(let i=1n;i<=BigInt(n);i++)
+					{
+						f=f * i;	
+					}
+					ans="M3= " + f.toString();
+					document.getElementById('output').innerText=ans.toString();	
+					
+				}
+				}
+			</script>
+		</center>
+	</body>
+</html>
